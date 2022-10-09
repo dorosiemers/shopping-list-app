@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="main">
-      <h1>React Search</h1>
+      <h1>Shopping List App</h1>
       <div className="search">
         <TextField
           id="outlined-basic"
