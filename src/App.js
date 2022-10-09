@@ -1,7 +1,9 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import Searchbar from "./components/Searchbar";
+
+const LOCAL_STORAGE_KEY = "item-storage";
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -9,6 +11,15 @@ function App() {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+
+  useEffect(() => {
+    const storedItem = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedItem) setInputText(storedItem);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(inputText));
+  }, [inputText]);
 
   return (
     <div className="main">
