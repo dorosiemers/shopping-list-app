@@ -1,9 +1,16 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { TextField } from "@mui/material";
+import { ListItem, TextField } from "@mui/material";
+import Fuse from "fuse.js";
 import Searchbar from "./components/Searchbar";
 
 const LOCAL_STORAGE_KEY = "item-storage";
+
+const fuse = new Fuse(ListItem, {
+  keys: ["name"],
+  includeScore: true,
+});
+const results = fuse.search("");
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -34,6 +41,7 @@ function App() {
         />
       </div>
       <Searchbar input={inputText} />
+      <Fuse />
     </div>
   );
 }
