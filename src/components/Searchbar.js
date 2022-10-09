@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FetchData from "./FetchData";
 import ProduceList from "./ProduceList";
 
 export default function Searchbar() {

@@ -1,16 +1,28 @@
 import "./App.css";
 import React, { useState } from "react";
-import ProduceList from "./components/ProduceList";
+import { TextField } from "@mui/material";
 import Searchbar from "./components/Searchbar";
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Shopping List</h1>
-      </header>
-      <Searchbar />
-      <ProduceList />
+    <div className="main">
+      <h1>React Search</h1>
+      <div className="search">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="outlined"
+          fullWidth
+          label="Search"
+        />
+      </div>
+      <Searchbar input={inputText} />
     </div>
   );
 }
